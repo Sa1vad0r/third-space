@@ -1,0 +1,82 @@
+
+.Signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+}
+
+
+/* Form container: limits width and gives internal padding */
+.Signup form{
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* space between the three boxes */
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    box-sizing: border-box;
+}
+
+
+/* Each field (username / email / password) stacked and full width*/
+.Signup .username,
+.Signup .email,
+.Signup .password{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Signup label{
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    color: #e6e6e6;
+}
+
+
+/* Make all inputs identical size and styling */
+.Signup input{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #cfcfcf;
+    background-color: aliceblue;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.Signup input:focus{
+    outline: none;
+    border-color: #6ea8ff;
+    box-shadow: 0 0 0 4px rgba(110,168,255,0.12);
+}
+
+
+/* Button styling to match width and feel */
+.Signup button{
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #5b8cff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+.Signup .help-text{
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #cfcfcf;
+}

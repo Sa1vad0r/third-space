@@ -1,9 +1,13 @@
 import Image from "next/image";
+import Login from './Login/Page';
+import LoginC from './Login/Page';
+import Signup from "./Signup/page";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      hellow world
+    <div>
+      <Login />
+      <Signup/>
     </div>
   );
 }
