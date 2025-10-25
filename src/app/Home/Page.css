@@ -1,0 +1,30 @@
+
+/*
+.CardC {
+  position: absolute;
+  top: 25vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65vw;
+  height: 20vh;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #000000;
+  color: #000000;
+}
+*/
+
+.CardC {
+  position: absolute;
+  top: 25vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw; /* increased from 65vw */
+  height: 20vh;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #000000;
+  color: #000000;
+}
