@@ -4,9 +4,7 @@ import CardItem from "../CardItem";
 import HeaderBar from "../Headerbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../Firebase.config";
-import {Card} from "./Card";
-
-
+import { Card } from "./Card";
 
 interface Post {
   authorID: string;
@@ -40,19 +38,16 @@ const Page: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <HeaderBar
         query={query}
-        showSearchByDefault={false}
+        // showSearchByDefault={false}
         onQueryChange={setQuery}
       />
 
-      
       <div className="CardC">
         <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center space-y-8">
           {numbers.map((number) => (
-            <Card key = {number}/>
+            <Card key={number} />
           ))}
         </div>
-
-        
       </div>
     </div>
   );

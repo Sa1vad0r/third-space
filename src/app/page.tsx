@@ -1,7 +1,6 @@
-import Image from "next/image";
+// /app/page.tsx (server component)
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <div className="min-h-screen min-w-screen justify-items-center  bg-white"></div>
-  );
+export default function Page() {
+  redirect("/Home");
 }
