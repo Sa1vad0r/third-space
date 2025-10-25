@@ -1,13 +1,7 @@
 import Image from "next/image";
-import Login from './Login/Page';
-import LoginC from './Login/Page';
-import Signup from "./Signup/page";
 
 export default function Home() {
   return (
-    <div>
-      <Login />
-      <Signup/>
-    </div>
+    <div className="min-h-screen min-w-screen justify-items-center  bg-white"></div>
   );
 }

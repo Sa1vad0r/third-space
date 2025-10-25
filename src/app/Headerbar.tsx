@@ -111,11 +111,11 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
           <button
             onClick={() => {
               auth.signOut();
-              router.push("/SignIn");
+              router.push("/Login");
             }}
             className=" px-4 py-2 text-center text-blue-400 hover:text-blue-200"
           >
-            Sign In
+            Log In
           </button>
         )}
 
