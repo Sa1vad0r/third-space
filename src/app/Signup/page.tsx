@@ -25,12 +25,8 @@ export default function SignUp() {
       // user created successfully — redirect to home page
       setError(null);
       router.push("/Home");
-    } catch (err: any) {
-      const message =
-        err?.message ||
-        (typeof err === "string" ? err : "An unknown error occurred");
-      console.error(message);
-      setError(message);
+    } catch (error) {
+      console.error("Login error:", error);
     }
   };
 
