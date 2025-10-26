@@ -37,16 +37,16 @@ export default function Page() {
   }, [id]);
 
   // initialize piggy state from Groups when loaded
-  useEffect(() => {
-    if (!Groups) return;
-    // assume Groups may have numeric fields `goal` and `saved` (fallbacks provided)
-    const g =
-      typeof (Groups as any).goal === "number" ? (Groups as any).goal : 100;
-    const s =
-      typeof (Groups as any).saved === "number" ? (Groups as any).saved : 0;
-    setGoal(g);
-    setSaved(s);
-  }, [Groups]);
+
+  //   useEffect(() => {
+  //     if (!Groups) return;
+
+  //     const g = typeof Groups.goal === "number" ? Groups.goal : 100;
+  //     const s = typeof Groups.saved === "number" ? Groups.saved : 0;
+
+  //     setGoal(g);
+  //     setSaved(s);
+  //   }, [Groups]);
 
   const addContribution = () => {
     const amt = parseFloat(contribution);
@@ -154,7 +154,7 @@ export default function Page() {
             <div>
               <h3 className="text-lg font-semibold">Group Piggy Bank</h3>
               <p className="text-sm text-gray-500">
-                Help reach the group's goal
+                Help reach the group&apos;s goal
               </p>
             </div>
           </div>

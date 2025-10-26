@@ -9,7 +9,7 @@ import HeaderBar from "../../Headerbar";
 
 export default function Page() {
   const params = useParams();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
   const [Groups, setGroups] = useState<Post | null>(null);
 
   // piggy/goal state
@@ -37,12 +37,11 @@ export default function Page() {
   }, [id]);
 
   // initialize piggy state from Groups when loaded
-  useEffect(() => {
-    if (!Groups) return;
-    const s =
-      typeof (Groups as any).saved === "number" ? (Groups as any).saved : 0;
-    setSaved(s);
-  }, [Groups]);
+  // useEffect(() => {
+  //   if (!Groups) return;
+  //   const s = typeof Groups.saved === "number" ? Groups.saved : 0;
+  //   setSaved(s);
+  // }, [Groups]);
 
   const addContribution = () => {
     const amt = parseFloat(contribution);
@@ -142,7 +141,7 @@ export default function Page() {
             <div>
               <h3 className="text-lg font-semibold">Group Piggy Bank</h3>
               <p className="text-sm text-gray-500">
-                Help reach the group's goal
+                Help reach the group&apoSss goal
               </p>
             </div>
           </div>
@@ -184,7 +183,7 @@ export default function Page() {
                 </button>
               </div>
               <p className="text-xs text-gray-400 mt-2">
-                Contributionsare optional to the run club but help us support
+                Contributions are optional to the run club but help us support
                 members and future runs
               </p>
             </div>
