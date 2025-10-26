@@ -8,7 +8,11 @@ import Bar from "./diveBar.jpg";
 import Knit from "./knitting.jpg";
 import Art from "./art.jpg";
 import Hike from "./hike.jpg";
+import newDance from "./danceNew.jpg";
+import newRun from "./newRun.jpg";
+import newChess from "./newChess.jpg";
 import Image from "next/image";
+
 import { Card } from "./Cards";
 import HeaderBar from "../Headerbar";
 import { useState } from "react";
@@ -60,7 +64,7 @@ export default function Profile() {
           >
             {label === "Dance Party" && (
               <Image
-                src={Dance}
+                src={newDance}
                 alt="Dance Party"
                 layout="fill"
                 className="absolute inset-0 object-cover rounded-lg"
@@ -68,7 +72,7 @@ export default function Profile() {
             )}
             {label === "Run Club" && (
               <Image
-                src={Run}
+                src={newRun}
                 alt="Run Club"
                 layout="fill"
                 className="absolute inset-0 object-cover rounded-lg"
@@ -76,7 +80,7 @@ export default function Profile() {
             )}
             {label === "Chess Tournament" && (
               <Image
-                src={Chess}
+                src={newChess}
                 alt="Chess Tournament"
                 layout="fill"
                 className="absolute inset-0 object-cover rounded-lg"
@@ -93,7 +97,7 @@ export default function Profile() {
 
       <div className="px-6 mx-auto w-5/6">
         <h1 className="text-gray-700 font-serif mt-12 text-3xl mb-4 font-semibold">
-          Pasrt Spaces
+          Past Spaces
         </h1>
       </div>
 
