@@ -19,12 +19,11 @@ export default function Profile() {
       
       <div className="px-10">
         <h1 className="text-blue-700 mt-12 mb-4 font-semibold">Groups</h1>
-        <div className="flex overflow-x-auto gap-4">
+        <div className="flex justify-center overflow-x-auto gap-8 max-w-6xl mx-auto">
           <Card number={1}/>
           <Card number={2}/>
           <Card number={3}/>
           <Card number={4}/>
-          
         </div>
       </div>
 
