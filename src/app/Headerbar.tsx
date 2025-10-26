@@ -22,7 +22,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
   const user = useAuth();
 
   return (
-    <div className="flex flex-col md:flex-row items-center bg-blue-900 p-4 w-full flex-shrink-0 gap-2 md:gap-0">
+    <div className="flex flex-col md:flex-row md:justify-between items-center bg-blue-900 p-4 w-full flex-shrink-0 gap-2 md:gap-0">
       {/* Top Row: Logo and Mobile Profile Button */}
       <div className="flex justify-between items-center w-full md:w-1/5 md:justify-start md:gap-4">
         {/* Logo */}
@@ -46,16 +46,16 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
           </button>
 
           {showMenu && (
-            <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg z-50">
+            <div className="absolute right-0 mt-2 w-40 bg-white hover:bg-blue-500 shadow-lg rounded-lg z-50">
               <button
                 onClick={() => router.push("/Profile")}
-                className="w-full text-left px-4 py-2 hover:bg-emerald-100"
+                className="w-full text-left px-4 py-2 "
               >
                 Profile
               </button>
               <button
                 onClick={() => router.push("/Settings")}
-                className="w-full text-left px-4 py-2 hover:bg-emerald-100"
+                className="w-full text-left px-4 py-2 "
               >
                 Settings
               </button>
@@ -64,7 +64,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
                   auth.signOut();
                   router.push("/SignIn");
                 }}
-                className="w-full text-left px-4 py-2 hover:bg-emerald-100 text-red-600"
+                className="w-full text-left px-4 py-2 text-red-600"
               >
                 Sign Out
               </button>
@@ -73,9 +73,9 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
         </div>
       </div>
 
-      {/* Search Bar if enabled */}
+      {/* Search Bar if enabled (centered) */}
       {showSearchByDefault && (
-        <div className="w-full md:w-3/5 md:mx-auto">
+        <div className="w-full md:w-3/5 flex justify-center">
           <input
             type="text"
             value={query}
@@ -87,7 +87,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
             }}
             placeholder="Search"
             autoComplete="off"
-            className="w-full h-10 p-3 mx-0 sm:mx-16 rounded-full placeholder:text-white placeholder:font-semibold bg-emerald-700 shadow-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            className="w-full max-w-2xl h-10 p-3 rounded-full placeholder:text-white placeholder:font-semibold bg-blue-950 shadow-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
           />
         </div>
       )}

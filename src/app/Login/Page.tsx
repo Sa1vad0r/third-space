@@ -14,22 +14,27 @@ export default function SignUp() {
 
   const router = useRouter();
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form from submitting normally
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      // If login is successful, navigate to Home
       router.push("/Home");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+    } catch (error) {
+      console.error("Login error:", error);
+      // Handle login error here (you might want to show an error message to the user)
+    }
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen bg-gray-100">
+    <div className="flex flex-col items-center text-black justify-center w-full h-screen bg-gray-100">
       <div className="bg-white p-6 rounded shadow-md w-1/3">
         <h1 className="text-2xl font-bold text-black mb-4">Log In</h1>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block text-sm font-medium text-black mb-1">
               Username:
@@ -67,9 +72,6 @@ export default function SignUp() {
 
           <div className="flex justify-center">
             <button
-              onClick={() => {
-                signInWithEmailAndPassword(auth, email, password);
-              }}
               type="submit"
               className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600"
             >
@@ -77,7 +79,7 @@ export default function SignUp() {
             </button>
           </div>
         </form>
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-gray-700 text-center">
           Dont Have an Account? Sign Up{" "}
           <Link href="/SignUp" className="text-blue-500">
             here
