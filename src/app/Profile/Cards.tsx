@@ -2,27 +2,26 @@ import React from "react";
 
 // Define the props type
 type CardProps = {
-  number: number;
+  name: string;
 };
 
-export const Card: React.FC<CardProps> = ({ number }) => {
+export const Card: React.FC<CardProps> = ({ name }) => {
   return (
-    <div className="flex-shrink-0 w-1/5 h-40 bg-purple-400 text-white flex items-center justify-center rounded text-xl">
-      {number}
+    <div className="flex-shrink-0 w-40 h-40 bg-purple-400 text-white flex items-center justify-center rounded text-xl">
+      {name}
     </div>
   );
 };
 
 export default function App() {
-  const boxes: number[] = Array.from({ length: 10 }, (_, i) => i + 1); // Example: 10 cards
+  const cardNames = ["Hiking", "Hiking", "Hiking", "Hiking"]; // all 4 the same
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Horizontally Scrollable Cards</h2>
-
-      <div className="flex overflow-x-auto gap-4 p-2 border border-gray-300 rounded">
-        {boxes.map((number) => (
-          <Card key={number} number={number} />
+    <div className="px-10">
+      <h1 className="text-blue-700 mt-12 mb-4 font-semibold">Groups</h1>
+      <div className="flex justify-center overflow-x-auto gap-8 max-w-6xl mx-auto">
+        {cardNames.map((name, index) => (
+          <Card key={index} name={name} />
         ))}
       </div>
     </div>
