@@ -2,7 +2,6 @@
 import { useState } from "react";
 import "./LoginC.css";
 import Link from "next/link";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../Firebase.config";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
