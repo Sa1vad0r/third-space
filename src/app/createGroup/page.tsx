@@ -3,9 +3,9 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../../Firebase.config";
-import { Post } from "../PostInt";
-import HeaderBar from "../../Headerbar";
+import { db } from "../../../Firebase.config";
+import { Post } from "../Groups/PostInt";
+import HeaderBar from "../Headerbar";
 
 export default function Page() {
   const params = useParams();
@@ -13,7 +13,7 @@ export default function Page() {
   const [Groups, setGroups] = useState<Post | null>(null);
 
   // piggy/goal state
-  const [goal, setGoal] = useState<number>(160); // Set a fixed goal
+  const [goal, setGoal] = useState<number>(100);
   const [saved, setSaved] = useState<number>(0);
   const [contribution, setContribution] = useState<string>("");
 
@@ -39,8 +39,12 @@ export default function Page() {
   // initialize piggy state from Groups when loaded
   useEffect(() => {
     if (!Groups) return;
+    // assume Groups may have numeric fields `goal` and `saved` (fallbacks provided)
+    const g =
+      typeof (Groups as any).goal === "number" ? (Groups as any).goal : 100;
     const s =
       typeof (Groups as any).saved === "number" ? (Groups as any).saved : 0;
+    setGoal(g);
     setSaved(s);
   }, [Groups]);
 
@@ -65,15 +69,17 @@ export default function Page() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 rounded-lg bg-white/10 flex items-center justify-center text-2xl font-semibold">
-              {Groups?.Title ? Groups.Title.charAt(0).toUpperCase() : "R"}
+              {Groups?.Title ? Groups.Title.charAt(0).toUpperCase() : "G"}
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold leading-tight">
-                {"River Run "}
+                {Groups?.Title ?? "Group Title"}
               </h1>
               <p className="text-sm text-white/80 mt-1">
                 Organized by{" "}
-                <span className="font-semibold">{"San Antonio Run Club"}</span>
+                <span className="font-semibold">
+                  {Groups?.owner ?? "Organizer"}
+                </span>
               </p>
             </div>
           </div>
@@ -83,37 +89,43 @@ export default function Page() {
               <span className="text-xs text-white/90 font-medium mr-2">
                 Location
               </span>
-              <span className="whitespace-nowrap">{"Downtown RiverWlak"}</span>
+              <span className="whitespace-nowrap">
+                {Groups?.Content ?? "Unknown"}
+              </span>
             </div>
 
             <div className="flex flex-col md:flex-row items-start md:items-center gap-1 bg-white/10 px-3 py-2 rounded-md">
               <span className="text-xs text-white/90 font-medium mr-2">
                 Date
               </span>
-              <span>{"Every 1st of the Month "}</span>
+              <span>{Groups?.Content ?? "TBD"}</span>
             </div>
 
             <div className="flex flex-col md:flex-row items-start md:items-center gap-1 bg-white/10 px-3 py-2 rounded-md">
               <span className="text-xs text-white/90 font-medium mr-2">
                 Time
               </span>
-              <span>{"5pm CST"}</span>
+              <span>{Groups?.Content ?? "TBD"}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex flex-row flex-1 overflow-hidden">
+        {/* Main content area */}
         <main className="flex-1 overflow-auto bg-gray-50 min-h-screen p-6">
           <div className="max-w-4xl mx-auto">
+            {/* Placeholder for main content */}
             <div className="flex flex-col p-9 space-y-5 h-96 rounded-md border-2 border-dashed border-gray-200  items-center justify-center text-gray-400">
               Main group content goes here
             </div>
           </div>
         </main>
 
+        {/* Sidebar with piggy bank / goal meter */}
         <aside className="w-80 bg-white border-l p-6 flex-shrink-0">
           <div className="flex items-center gap-3">
+            {/* simple piggy SVG */}
             <div className="w-14 h-14 bg-pink-50 rounded-full flex items-center justify-center">
               <svg
                 width="36"
@@ -184,9 +196,30 @@ export default function Page() {
                 </button>
               </div>
               <p className="text-xs text-gray-400 mt-2">
-                Contributionsare optional to the run club but help us support
-                members and future runs
+                Contributions here are local-only. Persist to Firestore if you
+                want to save them.
               </p>
+            </div>
+
+            <div className="text-black mt-6">
+              <label className="text-xs text-gray-600">Set goal</label>
+              <div className="flex gap-2 mt-2">
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  value={goal}
+                  onChange={(e) => setGoal(Number(e.target.value || 0))}
+                  className="flex-1 px-3 py-2 border rounded-md text-sm"
+                />
+                <button
+                  onClick={() => {}}
+                  className="px-3 py-2 bg-gray-100 text-gray-700 rounded-md text-sm"
+                  title="Saving is local only. Add persistence if needed."
+                >
+                  Update
+                </button>
+              </div>
             </div>
           </div>
         </aside>

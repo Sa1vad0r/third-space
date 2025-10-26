@@ -7,7 +7,7 @@ export const Card = ({ post }: { post: Event }) => {
       <div className="w-3/6 p-7 bg-gray-100 rounded-lg shadow-lg text-black">
         <div className="flex flex-row items-start">
           <Link
-            href={"Groups"}
+            href={`Groups/${post.id}`}
             className="font-bold w-1/2 hover:text-blue-500 text-left font-serif text-3xl"
           >
             {post.event_title}

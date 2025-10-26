@@ -26,6 +26,12 @@ const Page: React.FC = () => {
 
       <div className="CardC">
         <div className="container mx-auto overflow-hidden px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center space-y-8 max-w-6xl">
+          <button
+            onClick={() => (window.location.href = "/createGroup")}
+            className="border-[1px] border-dashed border-gray-600 hover:bg-gray-300 transition-all  bg-gray-200 w-4/6 text-black px-4 py-2 rounded"
+          >
+            Add Event
+          </button>
           {events.length === 0 ? (
             <p className="text-gray-500">No events found.</p>
           ) : (
