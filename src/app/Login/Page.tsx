@@ -80,7 +80,7 @@ export default function SignUp() {
         </form>
         <p className="mt-4 text-gray-700 text-center">
           Dont Have an Account? Sign Up{" "}
-          <Link href="/SignUp" className="text-blue-500">
+          <Link href="/Signup" className="text-blue-500">
             here
           </Link>
         </p>
